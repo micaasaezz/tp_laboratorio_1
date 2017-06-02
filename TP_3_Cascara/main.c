@@ -117,7 +117,7 @@ int main()
                 {
                     printMovie((movies+i));
                 }
-                printf("\Escriba el nombre de pelicula para modificar:");
+                printf("\nEscriba el nombre de pelicula para modificar:");
                 fflush(stdin);
                 gets(auxtitulo);
                 for(i=0; i<cantMovies; i++)
