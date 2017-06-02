@@ -63,7 +63,7 @@ int cargarDatosMovie(EMovie* movie)
     scanf("%c", &opcion);
     if(opcion == 's')
     {
-        movie = auxiliarMovie;
+        *movie = *auxiliarMovie;
         free(auxiliarMovie);
         pudo = 1;
     }
@@ -78,19 +78,21 @@ int cargarDatosMovie(EMovie* movie)
 
 void printMovie(EMovie* movie)
 {
-    printf("%s\n%s\n%d\n%s\n%d\n%s\n", movie->titulo, movie->genero, movie->duracion, movie->descripcion, movie->puntaje, movie->linkImagen);
+    printf("TITULO: %s\nGENERO: %s\nDURACION: %d\nDESCRIPCION: %s\nPUNTAJE: %d\nLINK DE IMAGEN: %s\n",movie->titulo,movie->genero,movie->duracion,movie->descripcion, movie->puntaje, movie->linkImagen);
+
+
 }
 
 int agregarPelicula(EMovie* movie, FILE* archivo)
 {
     int pudo=0;
 
-    //archivo = fopen("peliculas.dat", "rb");
+    archivo = fopen("peliculas.dat", "wb");
 
     if(archivo!=NULL)
     {
         pudo = fwrite(movie, sizeof(EMovie), 1, archivo);
-        if(pudo!=1)
+        if(pudo==1)
         {
             pudo = 1;
         }

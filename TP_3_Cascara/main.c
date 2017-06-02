@@ -10,7 +10,7 @@ int main()
     char seguir='s';
     int opcion=0;
     int cantMovies=0;
-    EMovie* pelicula;
+    //EMovie* pelicula;
     EMovie* movies;
     int cargoMovie=0;
     FILE* archivoMovies;
@@ -37,6 +37,7 @@ int main()
 
         }
     }
+
    // fclose(archivoMovies);
 
 
@@ -55,18 +56,18 @@ int main()
         {
             case 1:
 
-                pelicula = newMovie();
-                cargoMovie = cargarDatosMovie(pelicula);
+                movies = newMovie();
+                cargoMovie = cargarDatosMovie(movies);
                 if(cargoMovie==0)
                 {
                     break;
                 }
-                cargoMovie = agregarPelicula(pelicula, archivoMovies);
+                cargoMovie = agregarPelicula(movies, archivoMovies);
                 if(cargoMovie==1)
                 {
                     printf("Pelicula cargada correctamente.\n");
                     cantMovies++;
-                    movies = (EMovie*) realloc(movies, cantMovies);
+                    movies = (EMovie*) realloc(movies,sizeof(EMovie)*cantMovies);
                     flagIngreso = 1;
                 }
                 else
@@ -74,8 +75,7 @@ int main()
                     printf("No se pudo cargar la pelicula!\n");
                 }
 
-
-                break;
+                    break;
 
             case 2:
                 if(flagIngreso == 0)
@@ -117,7 +117,7 @@ int main()
                 {
                     printMovie((movies+i));
                 }
-                printf("\nEscriba el nombre de pelicula para modificar:");
+                printf("\Escriba el nombre de pelicula para modificar:");
                 fflush(stdin);
                 gets(auxtitulo);
                 for(i=0; i<cantMovies; i++)
