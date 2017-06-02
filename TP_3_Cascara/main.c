@@ -62,7 +62,15 @@ int main()
                 {
                     break;
                 }
-                cargoMovie = agregarPelicula(movies, archivoMovies);
+                if(cantMovies == 0)
+                {
+                    cargoMovie = agregarPelicula(movies, archivoMovies);
+                }
+                else
+                {
+                    cargoMovie = agregarPelicula((movies+cantMovies), archivoMovies);
+                }
+
                 if(cargoMovie==1)
                 {
                     printf("Pelicula cargada correctamente.\n");
